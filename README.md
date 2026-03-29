@@ -1,8 +1,8 @@
 # KESE - KISA Enhanced Security Evaluation Kit
 
-주요정보통신기반시설(CII) 취약점 분석평가를 위한 Claude Code 스킬 플러그인입니다.
+주요정보통신기반시설(CII) 취약점 분석평가 및 AI 보안 평가를 위한 Claude Code 스킬 플러그인입니다.
 
-[English](#english) | [한국어](#한국어)
+🌐 [한국어](#한국어) | [English](#english) | [Français](docs/README.fr.md) | [日本語](docs/README.ja.md) | [中文](docs/README.zh.md) | [Русский](docs/README.ru.md) | [Español](docs/README.es.md) | [Deutsch](docs/README.de.md) | [Português](docs/README.pt.md) | [Italiano](docs/README.it.md) | [العربية](docs/README.ar.md) | [हिन्दी](docs/README.hi.md) | [Türkçe](docs/README.tr.md) | [Tiếng Việt](docs/README.vi.md) | [ภาษาไทย](docs/README.th.md) | [Bahasa Indonesia](docs/README.id.md) | [Polski](docs/README.pl.md) | [Nederlands](docs/README.nl.md) | [Svenska](docs/README.sv.md) | [Українська](docs/README.uk.md)
 
 ---
 
@@ -10,48 +10,61 @@
 
 ### Overview
 
-KESE (KISA Enhanced Security Evaluation Kit) is a Claude Code plugin that provides comprehensive vulnerability assessment capabilities based on KISA (Korea Internet & Security Agency) guidelines for Critical Information Infrastructure (CII).
+KESE (KISA Enhanced Security Evaluation Kit) is a Claude Code plugin that provides comprehensive vulnerability assessment capabilities based on KISA (Korea Internet & Security Agency) guidelines. Supports both Critical Information Infrastructure (CII) and AI Security assessments.
+
+### Source Documents
+
+This plugin is built upon the following official security guidelines:
+
+| # | Document | Publisher | Year | Pages |
+|---|----------|-----------|:----:|:-----:|
+| 1 | **Technical Vulnerability Assessment Guide for CII** (주요정보통신기반시설 기술적 취약점 분석·평가방법 상세가이드) | KISA | 2026 | 873 |
+| 2 | **Administrative & Physical Vulnerability Assessment Guide for CII** (주요정보통신기반시설 관리·물리적 취약점 분석·평가 방법 안내서) | KISA | 2026 | 332 |
+| 3 | **AI Security Guide** (인공지능(AI) 보안 안내서) | MSIT / KISA | 2026 | 239 |
 
 ### Features
 
 | Skill | Description |
 |-------|-------------|
-| `/kesekit-en:start` | Run full CII vulnerability assessment (Technical 424 + Administrative 127 + Physical 9 items) |
-| `/kesekit-en:check` | Pre-deployment CII compliance checklist |
-| `/kesekit-en:fix` | Auto-generate hardening scripts for Unix/Windows/Web/DB |
+| `/kesekit-en:start` | Run full security vulnerability assessment (CII 560+ items or AI Security) |
+| `/kesekit-en:check` | Pre-deployment security compliance checklist |
+| `/kesekit-en:fix` | Auto-generate hardening scripts and security fixes |
 | `/kesekit-en:guide` | Generate secure coding prompts for AI tools |
 
-### Assessment Coverage
+### Supported Guidelines
 
-**Technical Assessment (424 items)**
-- Unix/Linux (U-01~U-68): Account, File, Service, Patch, Log management
-- Windows (W-01~W-73): Account, Service, Patch, Log, Security management
-- Web Service (WS-01~WS-47): Input validation, Security features, Error handling
-- Security Equipment (S-01~S-19): Firewall, IDS/IPS configuration
-- Network Equipment (N-01~N-40): Router, Switch configuration
-- Control System (C-01~C-45): SCADA, PLC security
-- PC/Terminal (PC-01~PC-18): Endpoint security
-- Database (D-01~D-32): DB access control, Encryption
-- Virtualization (V-01~V-36): VM security, Hypervisor
-- Cloud (CL-01~CL-14): Cloud-specific controls
+#### 1. CII (Critical Information Infrastructure) — 560+ items
 
-**Administrative Assessment (127 items)**
-- Information Security Policy & Organization (A-01~A-22)
-- Asset & Risk Management (A-23~A-43)
-- Human Resources Security (A-44~A-60)
-- Access Control (A-61~A-85)
-- Operations Security (A-86~A-103)
-- Incident Response & Business Continuity (A-104~A-118)
+**Technical Assessment**
+| System | Code | Items |
+|--------|------|:-----:|
+| Unix/Linux Server | U-01~U-67 | 67 |
+| Windows Server | W-01~W-64 | 64 |
+| Web Service | WEB-01~WEB-26 | 26 |
+| Security Equipment | S-01~S-23 | 23 |
+| Network Equipment | N-01~N-38 | 38 |
+| Control System | C-01~C-51 | 46 |
+| PC | PC-01~PC-18 | 18 |
+| DBMS | D-01~D-26 | 26 |
+| Mobile | M-01~M-04 | 4 |
+| Web Application | 21 codes | 21 |
+| Virtualization | HV-01~HV-25 | 25 |
+| Cloud | CA-01~CA-19 | 19 |
 
-**Physical Assessment (9 items)**
-- Protected Area Designation (B-01)
-- Access Control (B-02~B-05)
-- Asset & Environment Management (B-06~B-09)
+**Administrative Assessment**: A-1~A-127 (127 items, 14 domains)
+**Physical Assessment**: P-1~P-18 (18 items)
+
+#### 2. AI Security Guide — 54+ items
+
+| Target | Items | Lifecycle |
+|--------|:-----:|-----------|
+| AI Developer | 54 | 6-stage (Plan→Data→Model→Deploy→Monitor→Decommission) |
+| Service Provider | ~43 | 6-stage (Plan→Dev→Ops→Maintain→Feedback→Decommission) |
+| User | 7 | Security best practices |
 
 ### Installation
 
 ```bash
-# Install from marketplace
 claude plugins install kesekit-en@kesekit
 ```
 
@@ -77,48 +90,61 @@ claude plugins install kesekit-en@kesekit
 
 ### 개요
 
-KESE(KISA Enhanced Security Evaluation Kit)는 KISA(한국인터넷진흥원) 가이드라인에 기반한 주요정보통신기반시설(CII) 취약점 분석평가 기능을 제공하는 Claude Code 플러그인입니다.
+KESE(KISA Enhanced Security Evaluation Kit)는 KISA(한국인터넷진흥원) 가이드라인에 기반한 보안 취약점 분석평가 기능을 제공하는 Claude Code 플러그인입니다. 주요정보통신기반시설(CII) 취약점 분석평가와 AI 보안 평가를 모두 지원합니다.
+
+### 원본 문서
+
+본 플러그인은 다음 공식 보안 가이드라인을 기반으로 재구성되었습니다:
+
+| # | 문서명 | 발행기관 | 연도 | 페이지 |
+|---|--------|---------|:----:|:------:|
+| 1 | **주요정보통신기반시설 기술적 취약점 분석·평가방법 상세가이드** | 한국인터넷진흥원(KISA) | 2026 | 873 |
+| 2 | **주요정보통신기반시설 관리·물리적 취약점 분석·평가 방법 안내서** | 한국인터넷진흥원(KISA) | 2026 | 332 |
+| 3 | **인공지능(AI) 보안 안내서** | 과학기술정보통신부 / KISA | 2026 | 239 |
 
 ### 기능
 
 | 스킬 | 설명 |
 |------|------|
-| `/kesekit-ko:start` | 전체 CII 취약점 분석평가 실행 (기술적 424 + 관리적 127 + 물리적 9항목) |
-| `/kesekit-ko:check` | 배포 전 CII 컴플라이언스 체크리스트 |
-| `/kesekit-ko:fix` | Unix/Windows/Web/DB용 하드닝 스크립트 자동 생성 |
+| `/kesekit-ko:start` | 전체 보안 취약점 분석평가 실행 (CII 560+항목 또는 AI 보안) |
+| `/kesekit-ko:check` | 배포 전 보안 컴플라이언스 체크리스트 |
+| `/kesekit-ko:fix` | 하드닝 스크립트 및 보안 수정 자동 생성 |
 | `/kesekit-ko:guide` | AI 도구용 시큐어코딩 프롬프트 생성 |
 
-### 평가 범위
+### 지원 가이드라인
 
-**기술적 취약점 평가 (424항목)**
-- Unix/Linux (U-01~U-68): 계정, 파일, 서비스, 패치, 로그 관리
-- Windows (W-01~W-73): 계정, 서비스, 패치, 로그, 보안 관리
-- 웹 서비스 (WS-01~WS-47): 입력값 검증, 보안 기능, 에러 처리
-- 보안장비 (S-01~S-19): 방화벽, IDS/IPS 설정
-- 네트워크장비 (N-01~N-40): 라우터, 스위치 설정
-- 제어시스템 (C-01~C-45): SCADA, PLC 보안
-- PC/단말 (PC-01~PC-18): 엔드포인트 보안
-- 데이터베이스 (D-01~D-32): DB 접근 제어, 암호화
-- 가상화 (V-01~V-36): VM 보안, 하이퍼바이저
-- 클라우드 (CL-01~CL-14): 클라우드 특화 통제
+#### 1. 주요정보통신기반시설(CII) — 560+항목
 
-**관리적 취약점 평가 (127항목)**
-- 정보보호 정책 및 조직 (A-01~A-22)
-- 자산 및 위험 관리 (A-23~A-43)
-- 인적 보안 (A-44~A-60)
-- 접근 통제 (A-61~A-85)
-- 운영 보안 (A-86~A-103)
-- 침해사고 대응 및 업무 연속성 (A-104~A-118)
+**기술적 취약점 평가**
+| 시스템 | 코드 | 항목 수 |
+|--------|------|:------:|
+| Unix/Linux 서버 | U-01~U-67 | 67 |
+| Windows 서버 | W-01~W-64 | 64 |
+| 웹 서비스 | WEB-01~WEB-26 | 26 |
+| 보안 장비 | S-01~S-23 | 23 |
+| 네트워크 장비 | N-01~N-38 | 38 |
+| 제어시스템 | C-01~C-51 | 46 |
+| PC | PC-01~PC-18 | 18 |
+| DBMS | D-01~D-26 | 26 |
+| 이동통신 | M-01~M-04 | 4 |
+| Web Application | 21개 코드 | 21 |
+| 가상화 장비 | HV-01~HV-25 | 25 |
+| 클라우드 | CA-01~CA-19 | 19 |
 
-**물리적 취약점 평가 (9항목)**
-- 보호구역 지정 (B-01)
-- 출입 통제 (B-02~B-05)
-- 자산 및 환경 관리 (B-06~B-09)
+**관리적 취약점 평가**: A-1~A-127 (127항목, 14개 영역)
+**물리적 취약점 평가**: P-1~P-18 (18항목)
+
+#### 2. AI 보안 안내서 — 54+항목
+
+| 대상 | 항목 수 | 생명주기 |
+|------|:------:|---------|
+| AI 개발자 | 54 | 6단계 (계획→데이터→모델개발→배포→모니터링→파기) |
+| AI 서비스 제공자 | ~43 | 6단계 (계획→개발→운영→유지보수→피드백→파기) |
+| AI 이용자 | 7 | 보안 수칙 |
 
 ### 설치
 
 ```bash
-# 마켓플레이스에서 설치
 claude plugins install kesekit-ko@kesekit
 ```
 
@@ -140,90 +166,91 @@ claude plugins install kesekit-ko@kesekit
 
 ---
 
-## 책자 자료
+## 프로젝트 구조
 
-### 통합 가이드북
+```
+KESE-KIT/
+├── .claude-plugin/
+│   └── marketplace.json              ← 플러그인 메타데이터
+├── skills/                            ← 영문 스킬 (라우터)
+│   ├── start/
+│   │   ├── SKILL.md                  ← 라우터 (~80줄)
+│   │   └── references/               ← 가이드라인별 지식
+│   │       ├── cii/                  ← CII 14개 reference
+│   │       └── ai-security/          ← AI 보안 4개 reference
+│   ├── check/
+│   ├── fix/
+│   └── guide/
+├── skills-ko/                         ← 한글 스킬 (동일 구조)
+├── authorkit/                         ← 원본 문서 및 작업 산출물
+│   ├── converted/
+│   │   ├── ref-001/                  ← 관리·물리적 가이드 (full.md)
+│   │   ├── ref-002/                  ← 기술적 가이드 (full.md)
+│   │   └── ref-003/                  ← AI 보안 안내서 (full.md)
+│   └── ...
+├── 문서/                              ← 원본 PDF
+└── README.md
+```
 
-KESE KIT의 전체 내용을 담은 통합 가이드북도 제공됩니다:
+---
 
-| 파일 | 설명 |
-|------|------|
-| `authorkit/KESE-KIT-완전판.md` | 한글 통합본 (22개 장 + 부록) |
-| `authorkit/KESE-KIT-Complete-Guide.md` | 영문 통합본 (22 Chapters) |
+## 변경 이력
 
-### 챕터별 가이드
+### v2.0.0 (2026-03-30)
 
-| Part | 챕터 | 주제 |
-|------|------|------|
-| I | 1-2 | 기반시설 보안 개요, 취약점 분석 방법론 |
-| II | 3-12 | 기술적 취약점 (Unix, Windows, Web, DB, 네트워크 등) |
-| III | 13-19 | 관리적/물리적 취약점 |
-| IV | 20-22 | 실무 적용 (공공사업, 조달, 자동화) |
+**구조 리팩토링 — Progressive Disclosure 패턴 적용**
+
+| 변경 | 이전 (v1.0) | 이후 (v2.0) |
+|------|------------|------------|
+| SKILL.md | 모든 지식이 인라인 (270~465줄) | 라우터만 (~50~80줄) |
+| 가이드라인 | CII만 지원 | CII + AI 보안 지원 |
+| 지식 저장 | SKILL.md에 하드코딩 | `references/` 분리 (18개 파일) |
+| 항목 코드 | 일부 항목만 포함 | 2026 가이드 기반 전체 항목 |
+| 확장성 | 새 가이드라인 추가 시 스킬 수 증가 | 스킬 4개 고정, references만 추가 |
+
+**새 가이드라인 추가: AI 보안 안내서**
+- 출처: 과학기술정보통신부·한국인터넷진흥원 「인공지능(AI) 보안 안내서」
+- AI 개발자 54개 검증항목 (6단계 생명주기)
+- AI 서비스 제공자 보안 요구사항
+- AI 이용자 보안 수칙 7개
+
+**CII 가이드라인 업데이트**
+- 2026 상세가이드 기반으로 전체 항목 재추출
+- 항목 코드 체계 반영 (WEB, HV, CA 등 신규 코드)
+
+### v1.0.0 (2026-03-29)
+
+- 초기 릴리스
+- CII 취약점 분석평가 스킬 4개 (한/영)
+- 기술적(424) + 관리적(127) + 물리적(9) 항목
 
 ---
 
 ## 법적 근거
 
-본 평가는 다음 법적 근거를 따릅니다:
-
 - **정보통신기반 보호법** (Act on Protection of Information and Communications Infrastructure)
 - **전자정부법** (e-Government Act)
 - **개인정보 보호법** (Personal Information Protection Act)
-- **국가정보보안 기본지침** (National Information Security Basic Guidelines)
+- **인공지능 기본법** (AI Basic Act, 2026.1.22 시행)
 
 ---
 
 ## 관련 자료
 
 - [KISA 기술적 취약점 분석평가 상세 가이드](https://www.kisa.or.kr)
+- [인공지능(AI) 보안 안내서](https://www.kisa.or.kr)
 - [OWASP Top 10](https://owasp.org/Top10/)
+- [OWASP Top 10 for LLM](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - [CWE/SANS Top 25](https://cwe.mitre.org/top25/)
-
----
-
-## 프로젝트 구조
-
-```
-KESE/
-├── .claude-plugin/
-│   └── marketplace.json           ← 플러그인 메타데이터
-├── skills/                         ← 영문 스킬
-│   ├── start/SKILL.md
-│   ├── check/SKILL.md
-│   ├── fix/SKILL.md
-│   └── guide/SKILL.md
-├── skills-ko/                      ← 한글 스킬
-│   ├── start/SKILL.md
-│   ├── check/SKILL.md
-│   ├── fix/SKILL.md
-│   └── guide/SKILL.md
-├── authorkit/
-│   ├── drafts/                     ← 한글 챕터별 파일
-│   ├── drafts-en/                  ← 영문 챕터별 파일
-│   ├── KESE-KIT-완전판.md          ← 한글 통합본
-│   └── KESE-KIT-Complete-Guide.md  ← 영문 통합본
-└── README.md
-```
 
 ---
 
 ## Built With
 
-이 프로젝트는 다음 Claude Code 플러그인을 활용하여 제작되었습니다:
-
 | Plugin | Description |
 |--------|-------------|
-| [authorkit-ko](https://github.com/cdppcorp/authorkit) | 책 집필 지원 스킬 - PDF 분석, 구조 추출, 퇴고/재작성, 텍스트 블록도 생성 |
-| [win-hooks](https://github.com/anthropics/claude-code-plugins) | Windows 환경에서 Claude Code 플러그인 훅 호환성 지원 |
-
-### 제작 과정
-
-1. **authorkit-ko:juice** - KISA PDF 가이드를 마크다운으로 변환
-2. **authorkit-ko:analyze** - 레퍼런스 구조 분석 및 용어 추출
-3. **authorkit-ko:draft** - 22개 장 초안 작성 및 퇴고
-4. 한글 → 영문 번역 (22개 장)
-5. 통합본 생성 (한글/영문)
-6. KESEKIT 스킬 플러그인 구현
+| [authorkit-ko](https://github.com/cdppcorp/authorkit) | 책 집필 지원 스킬 - PDF 분석, 구조 추출, 퇴고/재작성 |
+| [win-hooks](https://github.com/anthropics/claude-code-plugins) | Windows 환경 Claude Code 플러그인 훅 호환성 |
 
 ---
 

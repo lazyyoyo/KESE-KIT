@@ -5,17 +5,17 @@
     "url": "https://github.com/cdppcorp"
   },
   "metadata": {
-    "description": "KESA-based Critical Information Infrastructure (CII) vulnerability assessment skills. Technical (424 items), Administrative (127 items), Physical (9 items) security evaluation based on Korean Information Security Agency (KISA) guidelines.",
-    "version": "1.0.0",
+    "description": "KISA-based security vulnerability assessment skills. Supports CII (Critical Information Infrastructure) with 560+ items and AI Security Guide. Technical, Administrative, Physical security evaluation based on Korean KISA guidelines.",
+    "version": "2.0.0",
     "license": "MIT"
   },
   "plugins": [
     {
       "name": "kesekit-en",
-      "description": "CII vulnerability assessment skills (English). start(full technical/administrative/physical security audit), check(CII compliance pre-deployment checklist), fix(auto-fix vulnerabilities with hardening scripts), guide(generate secure coding prompts for AI tools).",
+      "description": "Security vulnerability assessment skills (English). start(full CII + AI security audit), check(compliance pre-deployment checklist), fix(auto-fix with hardening scripts), guide(secure coding prompts for AI tools). Supports CII infrastructure (560+ items) and AI Security Guide.",
       "source": "./",
       "strict": false,
-      "keywords": ["security", "KISA", "CII", "vulnerability", "assessment", "infrastructure", "hardening"],
+      "keywords": ["security", "KISA", "CII", "vulnerability", "assessment", "infrastructure", "hardening", "AI security"],
       "category": "security",
       "skills": [
         "./skills/start",
@@ -26,10 +26,10 @@
     },
     {
       "name": "kesekit-ko",
-      "description": "주요정보통신기반시설 취약점 분석평가 스킬 (한국어). start(기술/관리/물리 보안 전체 감사), check(CII 컴플라이언스 배포 전 체크리스트), fix(취약점 자동 수정 + 보안설정 스크립트), guide(AI 도구용 시큐어코딩 프롬프트 생성).",
+      "description": "보안 취약점 분석평가 스킬 (한국어). start(CII + AI 보안 전체 감사), check(컴플라이언스 배포 전 체크리스트), fix(취약점 자동 수정 + 하드닝 스크립트), guide(AI 도구용 시큐어코딩 프롬프트 생성). 주요정보통신기반시설(560+항목)과 AI 보안 안내서를 지원합니다.",
       "source": "./",
       "strict": false,
-      "keywords": ["보안", "KISA", "주요정보통신기반시설", "취약점", "분석평가", "기반시설", "보안설정"],
+      "keywords": ["보안", "KISA", "주요정보통신기반시설", "취약점", "분석평가", "기반시설", "보안설정", "AI보안"],
       "category": "security",
       "skills": [
         "./skills-ko/start",
