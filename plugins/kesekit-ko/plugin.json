@@ -1,0 +1,12 @@
+{
+  "name": "kesekit-ko",
+  "version": "2.1.0",
+  "description": "KISA 보안 취약점 분석평가 키트. 주요정보통신기반시설(560+항목), AI 보안, 로봇 보안 점검.",
+  "author": {
+    "name": "CDPP Corp",
+    "url": "https://github.com/cdppcorp"
+  },
+  "repository": "https://github.com/cdppcorp/KESE-KIT",
+  "license": "MIT",
+  "keywords": ["보안", "KISA", "CII", "취약점", "분석평가"]
+}
