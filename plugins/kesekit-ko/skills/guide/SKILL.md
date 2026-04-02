@@ -1,5 +1,5 @@
 ---
-name: guide
+name: kesekit-guide
 description: AI 도구(Claude, ChatGPT, Cursor, Copilot)용 시큐어 코딩 프롬프트와 가이드를 생성합니다. KISA CII 가이드라인, CWE 매핑, AI 보안 안내서, 로봇 보안 통제를 따르는 보안 코드 작성을 위한 프롬프트를 생성합니다. "보안 가이드 생성", "AI 보안 프롬프트", "시큐어코딩 가이드", "AI에게 안전한 코드 요청", "AI 보안 가이드", "로봇 보안 가이드" 시 반드시 이 스킬을 사용하세요.
 ---
 
